@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .small {
+        width: 300px;
+        height: 200px;
+        background-color: #fff;
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    span {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    h1 {
+        color: blueviolet;
+        margin-top: 75px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="wrap">
+        <button id="btn">狠狠的点击我</button>
+    </div>
+    <script>
+        const wrap = document.getElementById("wrap");
+        const btn = document.getElementById("btn");
+        const sp = document.createElement("span");
+        const dv = document.createElement("div");
+        const small = document.createElement("div");
+        const h1 = document.createElement("h1");
+
+        btn.onclick = () => {
+            dv.className = 'box';
+            wrap.appendChild(dv);
+            btn.style.display = "none";
+            small.className = 'small';
+            dv.appendChild(small);
+            small.appendChild(sp);
+            sp.innerHTML = "&times;";
+            h1.innerHTML = "hello world!";
+            small.appendChild(h1);
+        }
+        sp.onclick = () => {
+            btn.style.display = "block";
+            wrap.removeChild(dv);
+        }
+    </script>
+</body>
+
+</html>
